@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1d2b45">
+<meta name="theme-color" content="#2f5d3a">
+<meta name="color-scheme" content="light">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="صفوۃ المصادر — عربی مصادر کے فلیش کارڈ اور ثلاثی مجرد و مزید فیہ کی گردانیں">
 <title>صفوۃ المصادر</title>
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,7 +13,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* Layout idea: one calm column of content, a floating dock for navigation, the gardaan panel docks to the screen edge. */
 :root {
@@ -28,13 +30,13 @@
   --glass-b: rgba(29,43,69,.09);
   --shadow: 0 1px 2px rgba(29,43,69,.04), 0 6px 20px rgba(29,43,69,.06);
   --f-ar: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
-  --f-ur: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Noto Sans Arabic", serif;
-  --f-ui: "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --f-ur: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+  --f-ui: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
   --r: 18px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root[data-theme="auto-dark"] {
     --ink: #e8ecf3; --paper: #10151d; --slip: #18202b; --rule: #273140; --muted: #9aa4b5;
     --saffron: #e3a43c; --saffron-soft: #33291a; --teal: #62c3bb; --teal-soft: #163432;
     --glass: rgba(24,32,43,.8); --glass-b: rgba(255,255,255,.08);
@@ -238,12 +240,126 @@ select.sel { border: 1px solid var(--rule); background: var(--slip); border-radi
   .tbl .fm { font-size: 22px; }
   .filters .count { width: 100%; margin: 0; }
 }
+
+/* ===== Field-notebook theme (parchment + forest green), modernised ===== */
+:root {
+  --ink: #1f2a24; --paper: #f4f1ea; --slip: #ffffff; --rule: #d8d4c8; --muted: #66706a;
+  --teal: #2f5d3a; --teal-soft: #e8efe3; --saffron: #9a6516; --saffron-soft: #f4ead6; --warn: #a33a1f;
+  --glass: rgba(255,255,255,.92); --glass-b: #d8d4c8;
+  --shadow: 0 1px 2px rgba(20,35,25,.05), 0 6px 18px rgba(20,35,25,.07);
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) { :root[data-theme="auto-dark"] {
+  --ink: #e5eae4; --paper: #121814; --slip: #1b231e; --rule: #2d3a32; --muted: #9aa69e;
+  --teal: #86b893; --teal-soft: #213328; --saffron: #d6a55a; --saffron-soft: #33291a; --warn: #e07a5f;
+  --glass: rgba(27,35,30,.92); --glass-b: #2d3a32; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3); } }
+:root[data-theme="dark"] {
+  --ink: #e5eae4; --paper: #121814; --slip: #1b231e; --rule: #2d3a32; --muted: #9aa69e;
+  --teal: #86b893; --teal-soft: #213328; --saffron: #d6a55a; --saffron-soft: #33291a; --warn: #e07a5f;
+  --glass: rgba(27,35,30,.92); --glass-b: #2d3a32; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3); }
+
+/* green header bar */
+header.top { background: #2f5d3a; color: #fff; border-bottom: 0; backdrop-filter: none; -webkit-backdrop-filter: none;
+  padding-top: calc(14px + env(safe-area-inset-top)); padding-bottom: 14px; box-shadow: 0 2px 12px rgba(20,35,25,.18); }
+:root[data-theme="dark"] header.top { background: #1f3d27; }
+@media (prefers-color-scheme: dark) { :root[data-theme="auto-dark"] header.top { background: #1f3d27; } }
+.brand h1 { font-size: 22px; color: #fff; }
+.brand .sub { margin: 2px 0 0; font-size: 12.5px; opacity: .85; }
+.mark { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.25); width: 40px; height: 40px; font-size: 24px; border-radius: 12px; }
+.install { background: #fff; color: #2f5d3a; border-radius: 8px; }
+
+/* section headings */
+h2.sec { margin: 0; font-size: 17px; font-weight: 600; color: var(--teal); border-bottom: 2px solid var(--teal); padding-bottom: 6px; }
+.search { top: 84px; border-radius: 12px; border-color: var(--rule); box-shadow: var(--shadow); }
+
+/* controls */
+.seg { border-radius: 999px; padding: 3px; border-color: var(--rule); }
+.seg button { border-radius: 999px; padding: 6px 16px; color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+select.sel, .pick select { border-radius: 8px; border-color: var(--rule); min-height: 38px; }
+.iconbtn { border-radius: 999px; border-color: var(--rule); }
+.iconbtn[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+.btn { border-radius: 8px; border-color: var(--teal); color: var(--teal); background: var(--slip); }
+.btn:hover { border-color: var(--teal); background: var(--teal-soft); }
+.btn.primary, .btn.accent { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn.primary:hover, .btn.accent:hover { background: color-mix(in srgb, var(--teal) 85%, #000); }
+.btn.ghost { border-color: transparent; color: var(--muted); }
+.btn.good[aria-pressed="true"] { background: var(--teal); color: #fff; }
+.pick label, .rootin + label { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
+.rootin input, .maker input { border-radius: 8px; border-color: var(--rule); }
+.examples button { background: var(--slip); border: 1px solid var(--rule); color: var(--ink); }
+.examples button:hover { border-color: var(--teal); color: var(--teal); }
+
+/* masdar cards: notebook slips */
+.card { border-radius: var(--r); border-color: var(--rule); }
+.card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+.card .foot { border-top: 1px dashed var(--rule); padding-top: 6px; }
+.dot { background: var(--teal); }
+.dot.mz { background: var(--saffron); }
+
+/* gardaan panel */
+.babcard, .babcard.mz { background: var(--slip); border: 1px solid var(--rule); border-inline-start: 4px solid var(--teal); border-radius: 10px; }
+.babcard.mz { border-inline-start-color: var(--saffron); }
+.babcard summary { color: var(--teal); }
+.babcard.mz summary { color: var(--saffron); }
+.sagheer { border: 1px solid var(--rule); border-radius: 10px; background: #fbfaf6; }
+:root[data-theme="dark"] .sagheer { background: var(--slip); }
+@media (prefers-color-scheme: dark) { :root[data-theme="auto-dark"] .sagheer { background: var(--slip); } }
+.sagheer b { color: var(--teal); }
+.tbl { border-radius: 12px; border-color: var(--rule); }
+.tbl h3 { color: var(--teal); font-size: 16px; border-bottom: 2px solid var(--teal); }
+.tbl .copy { border: 1px solid var(--teal); background: var(--slip); color: var(--teal); border-radius: 6px; }
+.tbl .grp { background: var(--teal-soft); color: var(--teal); }
+.tbl .r:hover { background: #fbfaf6; }
+:root[data-theme="dark"] .tbl .r:hover { background: var(--teal-soft); }
+.warn { background: #fff6f2; border-inline-start: 4px solid var(--warn); border-radius: 6px; }
+:root[data-theme="dark"] .warn { background: #2a1d18; }
+.pill { border-radius: 999px; background: var(--slip); }
+.close { border-radius: 8px; }
+.sheet .body { background: var(--paper); }
+.face { border-radius: 18px; }
+.progress i { background: var(--teal); }
+
+/* bottom dock, like the reference: wide, flat buttons, active filled green */
+nav.dock, nav.dock[class] { left: 50%; right: auto; top: auto; bottom: calc(12px + env(safe-area-inset-bottom)); transform: translateX(-50%);
+  flex-direction: row; align-items: stretch; width: min(560px, calc(100% - 24px)); gap: 4px; padding: 6px;
+  background: var(--glass); border: 1px solid var(--rule); border-radius: 22px; box-shadow: 0 8px 28px rgba(20,35,25,.22); }
+nav.dock button { flex: 1 1 0; min-width: 0; min-height: 56px; justify-content: center; gap: 3px; padding: 8px 2px 7px; border-radius: 16px; color: var(--ink); transform: none !important; }
+nav.dock .ico { width: auto; height: auto; background: none; border: 0; box-shadow: none !important; }
+nav.dock .ico svg { width: 22px; height: 22px; }
+nav.dock .lbl { font-size: 11px; }
+nav.dock button:hover { background: var(--teal-soft); }
+nav.dock button:active { background: var(--teal-soft); }
+nav.dock button[aria-selected="true"] { background: var(--teal); color: #fff; }
+nav.dock button[aria-selected="true"] .ico { background: none; color: #fff; }
+nav.dock button[aria-selected="true"] .lbl { color: #fff; }
+nav.dock .dsep { display: none; }
+nav.dock #dockTheme { flex: 0 0 64px; color: var(--muted); }
+main { padding-bottom: calc(110px + env(safe-area-inset-bottom)) !important; padding-right: max(20px, env(safe-area-inset-right)) !important; }
+.toast { bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
+
+
+/* one typeface (Amiri) throughout: size and rhythm tuned for Naskh */
+body { font-size: 16.5px; line-height: 1.7; }
+.card .meaning { font-size: 16px; line-height: 1.75; min-height: 1.75em; }
+.gp-head .mean { font-size: 18px; line-height: 1.7; }
+.face .um { font-size: clamp(24px, 6vw, 32px); line-height: 1.8; }
+.babcard .sign, .babcard ul { font-size: 15.5px; line-height: 1.85; }
+.tbl .lb, .pick label, .note, .count, .card .foot, .pill { font-size: 14px; }
+.tbl .grp { font-size: 13px; }
+.tbl h3, h2.sec { font-size: 19px; font-weight: 700; }
+nav.dock .lbl { font-size: 13px; font-weight: 700; }
+.seg button, select.sel, .iconbtn, .btn { font-size: 15.5px; }
+.brand h1 { font-size: 25px; }
+.brand .sub { font-size: 14px; }
+.search input { font-size: 18px; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
 <header class="top">
-  <div class="brand"><div class="mark" aria-hidden="true">ص</div><h1>صفوۃ المصادر</h1></div>
+  <div class="brand"><div class="mark" aria-hidden="true">ص</div><div><h1>صفوۃ المصادر</h1><p class="sub">عربی مصادر، فلیش کارڈ اور گردانیں</p></div></div>
   <button class="install" id="installBtn" hidden>انسٹال کریں</button>
 </header>
 
@@ -258,6 +374,7 @@ select.sel { border: 1px solid var(--rule); background: var(--slip); border-radi
 <main>
   <!-- MASADIR -->
   <section class="wrap" id="view-masadir">
+    <h2 class="sec">مصادر کی فہرست</h2>
     <div class="search">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="مصدر، مادہ یا معنی تلاش کریں" autocomplete="off" aria-label="تلاش">
@@ -278,6 +395,7 @@ select.sel { border: 1px solid var(--rule); background: var(--slip); border-radi
 
   <!-- STUDY -->
   <section class="wrap" id="view-study" hidden>
+    <h2 class="sec">فلیش کارڈ سے دہرائی</h2>
     <div class="study">
       <div class="settings">
         <select class="sel" id="studyBab" aria-label="باب"></select>
@@ -302,7 +420,7 @@ select.sel { border: 1px solid var(--rule); background: var(--slip); border-radi
   <!-- MAKER -->
   <section class="wrap" id="view-maker" hidden>
     <div class="maker">
-      <h2 class="view-title">کسی بھی مصدر کی گردان</h2>
+      <h2 class="sec">کسی بھی مصدر کی گردان</h2>
       <div class="row">
         <input id="mIn" dir="rtl" placeholder="مثلاً اِسْتِغْفَار" autocomplete="off" aria-label="مصدر">
         <button class="btn accent" id="mGo">بنائیں</button>
@@ -1165,7 +1283,7 @@ const babOptions = (withAll) => (withAll ? '<option value="all">تمام ابو�
 const rootEl = document.documentElement;
 const th = store.get('theme', null); if (th) rootEl.dataset.theme = th;
 $('#dockTheme').onclick = () => {
-  const dark = rootEl.dataset.theme ? rootEl.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const dark = rootEl.dataset.theme === 'dark';
   rootEl.dataset.theme = dark ? 'light' : 'dark'; store.set('theme', rootEl.dataset.theme);
 };
 
